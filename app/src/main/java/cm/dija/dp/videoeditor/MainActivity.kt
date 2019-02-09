@@ -3,7 +3,6 @@ package cm.dija.dp.videoeditor
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
-import cm.dija.dp.videoeditor.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
