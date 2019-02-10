@@ -1,4 +1,4 @@
-package cm.dija.dp.videoeditor.ui.main
+package cm.dija.dp.videoeditor.viewmodel
 
 import androidx.lifecycle.ViewModel
 

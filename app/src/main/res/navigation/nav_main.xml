@@ -4,6 +4,6 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_main"
             app:startDestination="@id/mainFragment">
 
-    <fragment android:id="@+id/mainFragment" android:name="cm.dija.dp.videoeditor.ui.main.MainFragment"
+    <fragment android:id="@+id/mainFragment" android:name="cm.dija.dp.videoeditor.page.MainFragment"
               android:label="main_fragment" tools:layout="@layout/main_fragment"/>
 </navigation>

@@ -1,4 +1,4 @@
-package cm.dija.dp.videoeditor.ui.main
+package cm.dija.dp.videoeditor.page
 
 import android.Manifest
 import androidx.lifecycle.ViewModelProviders
@@ -10,17 +10,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import cm.dija.dp.videoeditor.R
 import cm.dija.dp.videoeditor.repository.VideoRepository
-import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException
-import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler
-import com.github.hiteshsondhi88.libffmpeg.FFmpeg
-import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException
-import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler
-import android.Manifest.permission
 import android.annotation.SuppressLint
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import cm.dija.dp.videoeditor.R.attr.layoutManager
 import cm.dija.dp.videoeditor.adapter.VideoAdapter
+import cm.dija.dp.videoeditor.viewmodel.MainViewModel
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_fragment.*
 
