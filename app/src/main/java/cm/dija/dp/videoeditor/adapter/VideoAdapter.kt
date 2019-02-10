@@ -40,24 +40,9 @@ class VideoAdapter(val items : ArrayList<Video>, val context: Context) : Recycle
             val time = java.lang.Long.valueOf(duration) / 2
             val bitmap = metadataRetriever.getFrameAtTime(time, MediaMetadataRetriever.OPTION_NEXT_SYNC)
             //now convert to base64
-            val resizedBitmap = Bitmap.createScaledBitmap(
-                bitmap, 250, 150, false
-            )
-            holder.videoimage.setImageBitmap(resizedBitmap)
+            holder.videoimage.setImageBitmap(bitmap)
         } catch (ex: Exception) {
         }
-
-
-
-     /*   if(items[position].videoPath.isEmpty()){
-            val ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(items[position].thumbnailPath),250, 250)
-            holder.videoimage.setImageBitmap(ThumbImage)
-        }
-        else {
-            holder.videoimage.setImageURI(Uri.parse(items[position].videoPath))
-        }
-*/
-
     }
 }
 
