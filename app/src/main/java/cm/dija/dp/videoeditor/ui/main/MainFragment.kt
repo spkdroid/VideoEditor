@@ -17,7 +17,12 @@ import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunnin
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler
 import android.Manifest.permission
 import android.annotation.SuppressLint
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import cm.dija.dp.videoeditor.R.attr.layoutManager
+import cm.dija.dp.videoeditor.adapter.VideoAdapter
 import com.tbruyelle.rxpermissions2.RxPermissions
+import kotlinx.android.synthetic.main.main_fragment.*
 
 
 class MainFragment : Fragment() {
@@ -41,14 +46,21 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
-        val rxPermissions:RxPermissions = RxPermissions(this)
+        val rxPermissions = RxPermissions(this)
 
         rxPermissions
             .request(Manifest.permission.READ_EXTERNAL_STORAGE)
             .subscribe { granted ->
                 if (granted) { // Always true pre-M
+
                     var videoRepository:VideoRepository = VideoRepository()
                     var b = videoRepository.getVideoList(this.activity!!)
+
+                    rv_animal_list.apply {
+                       layoutManager =  LinearLayoutManager(context)
+                       adapter = VideoAdapter(b,context)
+                    }
+
                 } else {
                     Toast.makeText(context,"Permission Denied",Toast.LENGTH_LONG).show()
                 }
