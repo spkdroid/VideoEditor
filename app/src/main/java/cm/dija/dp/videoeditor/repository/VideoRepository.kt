@@ -24,7 +24,6 @@ class VideoRepository {
 
         var cursor:Cursor = activity.contentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, videoCols, null, null, null)
 
-        val id = cursor.getInt(cursor.getColumnIndex(MediaStore.Video.Media._ID))
 
         if (cursor != null && cursor.moveToFirst()) {
 

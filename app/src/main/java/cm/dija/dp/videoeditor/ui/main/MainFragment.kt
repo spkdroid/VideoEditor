@@ -1,5 +1,6 @@
 package cm.dija.dp.videoeditor.ui.main
 
+import android.Manifest
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import cm.dija.dp.videoeditor.R
+import cm.dija.dp.videoeditor.repository.VideoRepository
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException
 import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler
+import android.Manifest.permission
+import android.annotation.SuppressLint
+import com.tbruyelle.rxpermissions2.RxPermissions
+
 
 class MainFragment : Fragment() {
 
@@ -29,11 +35,26 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
+    @SuppressLint("CheckResult")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
+        val rxPermissions:RxPermissions = RxPermissions(this)
+
+        rxPermissions
+            .request(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .subscribe { granted ->
+                if (granted) { // Always true pre-M
+                    var videoRepository:VideoRepository = VideoRepository()
+                    var b = videoRepository.getVideoList(this.activity!!)
+                } else {
+                    Toast.makeText(context,"Permission Denied",Toast.LENGTH_LONG).show()
+                }
+            }
+
+        /*
         val ffmpeg = FFmpeg.getInstance(context)
         try {
             ffmpeg.loadBinary(object : LoadBinaryResponseHandler() {
@@ -81,9 +102,6 @@ class MainFragment : Fragment() {
             })
         } catch (e: FFmpegCommandAlreadyRunningException) {
             // Handle if FFmpeg is already running
-        }
-
-
+        } */
     }
-
 }
