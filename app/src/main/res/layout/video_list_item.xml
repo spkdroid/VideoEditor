@@ -18,7 +18,7 @@
 
     <ImageView
             android:layout_width="0dp"
-            android:layout_height="104dp"
+            android:layout_height="175dp"
             android:id="@+id/videoimage"
             android:layout_weight="1"
             app:layout_constraintEnd_toStartOf="@+id/filename" app:layout_constraintTop_toTopOf="parent"
