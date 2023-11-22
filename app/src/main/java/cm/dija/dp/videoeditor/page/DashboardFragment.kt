@@ -10,7 +10,6 @@ import cm.dija.dp.videoeditor.R
 import cm.dija.dp.videoeditor.viewmodel.DashboardViewModel
 
 class DashboardFragment : Fragment() {
-
     companion object {
         fun newInstance() = DashboardFragment()
     }
