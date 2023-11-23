@@ -3,7 +3,9 @@ package cm.dija.dp.videoeditor
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var navHost: NavHostFragment
     override fun onCreate(savedInstanceState: Bundle?) {
