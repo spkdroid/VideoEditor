@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import cm.dija.dp.videoeditor.R
 import cm.dija.dp.videoeditor.viewmodel.DashboardViewModel
 
@@ -14,7 +16,7 @@ class DashboardFragment : Fragment() {
         fun newInstance() = DashboardFragment()
     }
 
-    private lateinit var viewModel: DashboardViewModel
+    private val dashBoardViewModel: DashboardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +27,10 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        // TODO: Use the ViewModel
+        //viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        //dashBoardViewModel.
+
+    // TODO: Use the ViewModel
     }
 
 }
