@@ -6,15 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import cm.dija.dp.videoeditor.R
+import cm.dija.dp.videoeditor.di.BaseFragment
 import cm.dija.dp.videoeditor.viewmodel.DashboardViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : BaseFragment() {
     companion object {
         fun newInstance() = DashboardFragment()
     }
 
-    private lateinit var viewModel: DashboardViewModel
+    private val viewModel: DashboardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +30,11 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.getMenuItems().observeForever {
+            it.forEach {
+                Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
 }
