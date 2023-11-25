@@ -9,6 +9,10 @@ android {
     namespace = "cm.dija.dp.videoeditor"
     compileSdk = 34
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "cm.dija.dp.videoeditor"
         minSdk = 30
@@ -59,6 +63,7 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10") // Update to the desired version
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")       // Update to the same version
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
+    implementation("androidx.databinding:databinding-runtime:8.1.4")
 
 }
